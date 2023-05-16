@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/?currentSchema=users
+    username: abarrena0
+    password: abarrena0_tfg
+    driver-class-name: org.postgresql.Driver
+server:
+  port: 8082
+application:
+  name: user
+  version: 1.0.0
+  defaultLanguage: en_US
