@@ -1,17 +1,17 @@
 package edu.uoc.abarrena.users.domain.config;
 
-import edu.uoc.abarrena.users.application.CompanyService;
-import edu.uoc.abarrena.users.application.DiveDiaryService;
-import edu.uoc.abarrena.users.application.TravelerService;
-import edu.uoc.abarrena.users.application.UserService;
+import edu.uoc.abarrena.users.domain.service.CompanyService;
+import edu.uoc.abarrena.users.domain.service.DiveDiaryService;
+import edu.uoc.abarrena.users.domain.service.TravelerService;
+import edu.uoc.abarrena.users.domain.service.UserService;
 import edu.uoc.abarrena.users.domain.repository.CompanyRepository;
 import edu.uoc.abarrena.users.domain.repository.DiveDiaryRepository;
 import edu.uoc.abarrena.users.domain.repository.TravelerRepository;
 import edu.uoc.abarrena.users.domain.repository.UserRepository;
-import edu.uoc.abarrena.users.domain.service.CompanyServiceImpl;
-import edu.uoc.abarrena.users.domain.service.DiveDiaryServiceImpl;
-import edu.uoc.abarrena.users.domain.service.TravelerServiceImpl;
-import edu.uoc.abarrena.users.domain.service.UserServiceImpl;
+import edu.uoc.abarrena.users.domain.service.impl.CompanyServiceImpl;
+import edu.uoc.abarrena.users.domain.service.impl.DiveDiaryServiceImpl;
+import edu.uoc.abarrena.users.domain.service.impl.TravelerServiceImpl;
+import edu.uoc.abarrena.users.domain.service.impl.UserServiceImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

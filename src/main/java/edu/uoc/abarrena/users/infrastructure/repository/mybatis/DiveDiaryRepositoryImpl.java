@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.users.infrastructure.repository.mybatis;
 
-import edu.uoc.abarrena.users.application.converter.DiveDiaryConverter;
+import edu.uoc.abarrena.users.domain.converter.DiveDiaryConverter;
 import edu.uoc.abarrena.users.domain.model.DiveDiary;
 import edu.uoc.abarrena.users.domain.repository.DiveDiaryRepository;
 import edu.uoc.abarrena.users.infrastructure.repository.mybatis.entity.DiveDiaryEntity;

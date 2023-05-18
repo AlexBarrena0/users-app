@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.users.infrastructure.repository.mybatis;
 
-import edu.uoc.abarrena.users.application.converter.UserConverter;
+import edu.uoc.abarrena.users.domain.converter.UserConverter;
 import edu.uoc.abarrena.users.domain.model.User;
 import edu.uoc.abarrena.users.domain.repository.UserRepository;
 import edu.uoc.abarrena.users.infrastructure.repository.mybatis.mapper.UserMapper;

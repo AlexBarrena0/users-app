@@ -1,6 +1,6 @@
 package edu.uoc.abarrena.users.infrastructure.repository.mybatis;
 
-import edu.uoc.abarrena.users.application.converter.TravelerConverter;
+import edu.uoc.abarrena.users.domain.converter.TravelerConverter;
 import edu.uoc.abarrena.users.domain.model.Traveler;
 import edu.uoc.abarrena.users.domain.repository.TravelerRepository;
 import edu.uoc.abarrena.users.infrastructure.repository.mybatis.entity.TravelerEntity;
