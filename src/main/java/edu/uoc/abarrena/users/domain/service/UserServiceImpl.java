@@ -58,13 +58,11 @@ public class UserServiceImpl implements UserService {
         Claims claims = Jwts.claims().setSubject(user.getUsername());
         claims.put("role", user.getRole());
 
-        String token = Jwts.builder()
+         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
                 .setExpiration(expiration)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
-
-        return token;
     }
 }
