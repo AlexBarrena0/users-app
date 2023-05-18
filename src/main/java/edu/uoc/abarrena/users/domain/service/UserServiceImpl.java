@@ -2,6 +2,7 @@ package edu.uoc.abarrena.users.domain.service;
 
 import edu.uoc.abarrena.users.application.UserService;
 import edu.uoc.abarrena.users.domain.exceptions.EntityNotFoundException;
+import edu.uoc.abarrena.users.domain.exceptions.IncorrectCredentialsException;
 import edu.uoc.abarrena.users.domain.model.User;
 import edu.uoc.abarrena.users.domain.repository.UserRepository;
 import io.jsonwebtoken.Claims;
@@ -26,22 +27,18 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public String login(User user) {
+    public String login(User user) throws IncorrectCredentialsException {
         User userInfo = findUserByUsername(user.getUsername());
         if (userInfo != null && userInfo.getPassword().equals(user.getPassword())) {
             return generateToken(userInfo);
         } else {
-            return null;
+            throw new IncorrectCredentialsException();
         }
     }
 
     @Override
     public User findUserByUsername(String username) throws EntityNotFoundException {
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new EntityNotFoundException("User not found");
-        }
-        return user;
+        return userRepository.findByUsername(username);
     }
 
     @Override
@@ -53,7 +50,7 @@ public class UserServiceImpl implements UserService {
         Date now = new Date();
         Date expiration = new Date(now.getTime() + EXPIRATION_TIME);
 
-        SecretKey key = Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+        SecretKey key = Keys.hmacShaKeyFor(extendKey(SECRET_KEY));
 
         Claims claims = Jwts.claims().setSubject(user.getUsername());
         claims.put("role", user.getRole());
@@ -64,5 +61,13 @@ public class UserServiceImpl implements UserService {
                 .setExpiration(expiration)
                 .signWith(key, SignatureAlgorithm.HS256)
                 .compact();
+    }
+
+    private byte[] extendKey(String key) {
+        byte[] extendedKey = new byte[32];
+        for (int i = 0; i < key.length(); i++) {
+            extendedKey[i] = (byte) key.charAt(i);
+        }
+        return extendedKey;
     }
 }

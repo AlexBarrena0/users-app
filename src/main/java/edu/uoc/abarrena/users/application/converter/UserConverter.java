@@ -2,6 +2,7 @@ package edu.uoc.abarrena.users.application.converter;
 
 import edu.uoc.abarrena.users.domain.model.User;
 import edu.uoc.abarrena.users.infrastructure.repository.mybatis.entity.UserEntity;
+import edu.uoc.abarrena.users.infrastructure.rest.dto.request.LoginDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -9,5 +10,7 @@ import org.mapstruct.factory.Mappers;
 public interface UserConverter {
 
     public static final UserConverter INSTANCE = Mappers.getMapper(UserConverter.class);
+
+    User toDomain(LoginDto loginDto);
     User toDomain(UserEntity userEntity);
 }
