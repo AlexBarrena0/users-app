@@ -12,6 +12,13 @@ public interface CompanyRepository {
     public Long save(Company company);
 
     /**
+     * Find a company by id
+     * @param id the id of the company
+     * @return the company
+     */
+    public Company findById(Long id);
+
+    /**
      * Updates a company
      * @param company the company to update
      */

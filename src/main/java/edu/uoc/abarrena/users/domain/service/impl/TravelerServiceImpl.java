@@ -33,7 +33,7 @@ public class TravelerServiceImpl implements TravelerService {
 
     @Override
     public Traveler findTravelerById(Long id) {
-        return null;
+        return travelerRepository.findById(id);
     }
 
     @Override

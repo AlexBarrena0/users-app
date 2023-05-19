@@ -1,14 +1,12 @@
 package edu.uoc.abarrena.users.application.rest;
 
 import edu.uoc.abarrena.users.application.dto.request.CreateCompanyDto;
+import edu.uoc.abarrena.users.application.dto.response.CompanyDto;
 import edu.uoc.abarrena.users.domain.service.CompanyService;
 import edu.uoc.abarrena.users.domain.converter.CompanyConverter;
 import edu.uoc.abarrena.users.application.dto.response.Result;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Log4j2
 @RestController
@@ -30,5 +28,14 @@ public class CompanyController {
         Long companyId = companyService.createCompany(CompanyConverter.INSTANCE.toDomain(createCompanyDto));
 
         return new Result<Long>(companyId, "Company created successfully");
+    }
+
+    @GetMapping("/{id}")
+    public Result<CompanyDto> findCompanyById(@PathVariable Long id) {
+        log.trace("Finding company by id " + id);
+
+        CompanyDto companyDto = CompanyConverter.INSTANCE.toDto(companyService.findCompanyById(id));
+
+        return new Result<CompanyDto>(companyDto, "Company found successfully");
     }
 }

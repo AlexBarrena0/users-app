@@ -1,16 +1,13 @@
-package edu.uoc.abarrena.users.infrastructure.repository.mybatis.entity;
+package edu.uoc.abarrena.users.application.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
-@EqualsAndHashCode(callSuper = false)
-public class CompanyEntity extends UserEntity {
+public class CompanyDto {
 
+    private Long id;
     private String cif;
     private String name;
     private String address;

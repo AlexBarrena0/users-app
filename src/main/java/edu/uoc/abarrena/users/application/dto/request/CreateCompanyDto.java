@@ -19,7 +19,7 @@ public class CreateCompanyDto extends CreateUserDto {
     @NotBlank(message = "CIF is required")
     @Max(value = 9, message = "CIF must be 9 characters")
     @Min(value = 9, message = "CIF must be 9 characters")
-    private String CIF;
+    private String cif;
 
     @NotBlank(message = "Name is required")
     @Max(value = 50, message = "Name must be less than 50 characters")

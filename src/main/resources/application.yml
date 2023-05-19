@@ -7,6 +7,6 @@ spring:
 server:
   port: 8082
 application:
-  name: user
+  name: users-service
   version: 1.0.0
   defaultLanguage: en_US

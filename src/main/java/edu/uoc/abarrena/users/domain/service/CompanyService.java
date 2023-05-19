@@ -14,6 +14,12 @@ public interface CompanyService {
     public Long createCompany(Company company) throws DuplicateUserException;
 
     /**
+     * Finds a company by its id
+     * @param id the id of the company to find
+     * @return the company or null if not found
+     */
+    public Company findCompanyById(Long id);
+    /**
      * Updates a company
      * @param company the company to update
      */

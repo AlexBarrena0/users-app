@@ -1,5 +1,6 @@
 package edu.uoc.abarrena.users.domain.converter;
 
+import edu.uoc.abarrena.users.application.dto.response.TravelerDto;
 import edu.uoc.abarrena.users.domain.model.Traveler;
 import edu.uoc.abarrena.users.infrastructure.repository.mybatis.entity.TravelerEntity;
 import edu.uoc.abarrena.users.application.dto.request.CreateTravelerDto;
@@ -16,4 +17,6 @@ public interface TravelerConverter {
     Traveler toDomain(TravelerEntity travelerEntity);
 
     TravelerEntity toEntity(Traveler traveler);
+
+    TravelerDto toDto(Traveler traveler);
 }

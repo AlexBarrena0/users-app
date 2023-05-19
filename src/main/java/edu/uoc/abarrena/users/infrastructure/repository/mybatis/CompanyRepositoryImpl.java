@@ -24,6 +24,11 @@ public class CompanyRepositoryImpl implements CompanyRepository {
     }
 
     @Override
+    public Company findById(Long id) {
+        return CompanyConverter.INSTANCE.toDomain(companyMapper.findById(id));
+    }
+
+    @Override
     public void update(Company company) {
         CompanyEntity companyEntity = CompanyConverter.INSTANCE.toEntity(company);
         companyMapper.update(companyEntity);
