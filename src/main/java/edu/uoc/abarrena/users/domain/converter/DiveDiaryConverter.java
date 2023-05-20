@@ -1,5 +1,6 @@
 package edu.uoc.abarrena.users.domain.converter;
 
+import edu.uoc.abarrena.users.application.dto.response.DiveDiaryDto;
 import edu.uoc.abarrena.users.domain.model.DiveDiary;
 import edu.uoc.abarrena.users.infrastructure.repository.mybatis.entity.DiveDiaryEntity;
 import edu.uoc.abarrena.users.application.dto.request.CreateDiveDiaryDto;
@@ -13,6 +14,8 @@ import java.util.List;
 public interface DiveDiaryConverter {
 
     public static final DiveDiaryConverter INSTANCE = Mappers.getMapper(DiveDiaryConverter.class);
+
+    List<DiveDiaryDto> toDto(List<DiveDiary> diveDiary);
 
     @Mapping(target = "traveler.id", source = "travelerId")
     DiveDiary toDomain(CreateDiveDiaryDto createDiveDiaryDto);

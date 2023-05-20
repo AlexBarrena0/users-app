@@ -1,14 +1,15 @@
 package edu.uoc.abarrena.users.application.rest;
 
 import edu.uoc.abarrena.users.application.dto.request.CreateDiveDiaryDto;
+import edu.uoc.abarrena.users.application.dto.response.DiveDiaryDto;
 import edu.uoc.abarrena.users.domain.service.DiveDiaryService;
 import edu.uoc.abarrena.users.domain.converter.DiveDiaryConverter;
 import edu.uoc.abarrena.users.application.dto.response.Result;
 import lombok.extern.log4j.Log4j2;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @Log4j2
 @RestController
@@ -24,11 +25,21 @@ public class DiveDiaryController {
     }
 
     @PostMapping
-    public Result<Long> createDiveDiary(@RequestBody CreateDiveDiaryDto createDiveDiaryDto) {
+    public Result<Long> createDiveDiary(@Valid @RequestBody CreateDiveDiaryDto createDiveDiaryDto) {
         log.trace("Creating dive diary " + createDiveDiaryDto);
 
         Long diveDiaryId = diveDiaryService.createDiveDiary(DiveDiaryConverter.INSTANCE.toDomain(createDiveDiaryDto));
 
         return new Result<Long>(diveDiaryId, "Dive diary created successfully");
     }
+
+    @GetMapping
+    public Result<List<DiveDiaryDto>> getDiveDiaryByUserId(@RequestParam Long userId) {
+        log.trace("Finding dive diary by user id " + userId);
+
+        List<DiveDiaryDto> diveDiaryDtoList = DiveDiaryConverter.INSTANCE.toDto(diveDiaryService.findDiveDiaryByUserId(userId));
+
+        return new Result<List<DiveDiaryDto>>(diveDiaryDtoList, null);
+    }
+
 }
