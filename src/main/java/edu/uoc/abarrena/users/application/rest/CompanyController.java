@@ -1,12 +1,15 @@
 package edu.uoc.abarrena.users.application.rest;
 
 import edu.uoc.abarrena.users.application.dto.request.CreateCompanyDto;
+import edu.uoc.abarrena.users.application.dto.request.UpdateCompanyDto;
 import edu.uoc.abarrena.users.application.dto.response.CompanyDto;
 import edu.uoc.abarrena.users.domain.service.CompanyService;
 import edu.uoc.abarrena.users.domain.converter.CompanyConverter;
 import edu.uoc.abarrena.users.application.dto.response.Result;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Log4j2
 @RestController
@@ -22,7 +25,7 @@ public class CompanyController {
     }
 
     @PostMapping
-    public Result<Long> createCompany(@RequestBody CreateCompanyDto createCompanyDto) {
+    public Result<Long> createCompany(@Valid @RequestBody CreateCompanyDto createCompanyDto) {
         log.trace("Creating company " + createCompanyDto);
 
         Long companyId = companyService.createCompany(CompanyConverter.INSTANCE.toDomain(createCompanyDto));
@@ -37,5 +40,14 @@ public class CompanyController {
         CompanyDto companyDto = CompanyConverter.INSTANCE.toDto(companyService.findCompanyById(id));
 
         return new Result<CompanyDto>(companyDto, "Company found successfully");
+    }
+
+    @PutMapping("/{id}")
+    public Result<Boolean> updateCompany(@Valid @RequestBody UpdateCompanyDto updateCompanyDto) {
+        log.trace("Updating company " + updateCompanyDto);
+
+        companyService.updateCompany(CompanyConverter.INSTANCE.toDomain(updateCompanyDto));
+
+        return new Result<Boolean>(true, "Company updated successfully");
     }
 }

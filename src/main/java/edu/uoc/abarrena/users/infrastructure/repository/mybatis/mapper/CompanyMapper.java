@@ -12,6 +12,6 @@ public interface CompanyMapper {
     public void save(CompanyEntity companyEntity);
     @Select("SELECT * FROM COMPANY WHERE ID = #{id}")
     public CompanyEntity findById(Long id);
-    @Update("UPDATE COMPANY SET CIF = #{CIF}, NAME = #{name}, ADDRESS = #{address}, DESCRIPTION = #{description}, PHONE = #{phone}, EMAIL = #{email} WHERE ID = #{id}")
+    @Update("UPDATE COMPANY SET CIF = #{cif}, NAME = #{name}, ADDRESS = #{address}, DESCRIPTION = #{description}, PHONE = #{phone}, EMAIL = #{email} WHERE ID = #{id}")
     public void update(CompanyEntity companyEntity);
 }
