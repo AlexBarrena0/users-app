@@ -1,17 +1,8 @@
 package edu.uoc.abarrena.users.domain.config;
 
-import edu.uoc.abarrena.users.domain.service.CompanyService;
-import edu.uoc.abarrena.users.domain.service.DiveDiaryService;
-import edu.uoc.abarrena.users.domain.service.TravelerService;
-import edu.uoc.abarrena.users.domain.service.UserService;
-import edu.uoc.abarrena.users.domain.repository.CompanyRepository;
-import edu.uoc.abarrena.users.domain.repository.DiveDiaryRepository;
-import edu.uoc.abarrena.users.domain.repository.TravelerRepository;
-import edu.uoc.abarrena.users.domain.repository.UserRepository;
-import edu.uoc.abarrena.users.domain.service.impl.CompanyServiceImpl;
-import edu.uoc.abarrena.users.domain.service.impl.DiveDiaryServiceImpl;
-import edu.uoc.abarrena.users.domain.service.impl.TravelerServiceImpl;
-import edu.uoc.abarrena.users.domain.service.impl.UserServiceImpl;
+import edu.uoc.abarrena.users.domain.repository.*;
+import edu.uoc.abarrena.users.domain.service.*;
+import edu.uoc.abarrena.users.domain.service.impl.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -36,5 +27,10 @@ public class DomainConfig {
     @Bean
     public DiveDiaryService diveDiaryService(DiveDiaryRepository diveDiaryRepository, TravelerService travelerService) {
         return new DiveDiaryServiceImpl(diveDiaryRepository, travelerService);
+    }
+
+    @Bean
+    public FavouriteSearchService favouriteSearchService(FavouriteSearchRepository favouriteSearchRepository, TravelerService travelerService) {
+        return new FavouriteSearchServiceImpl(favouriteSearchRepository, travelerService);
     }
 }

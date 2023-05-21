@@ -1,17 +1,8 @@
 package edu.uoc.abarrena.users.infrastructure.repository.config;
 
-import edu.uoc.abarrena.users.domain.repository.CompanyRepository;
-import edu.uoc.abarrena.users.domain.repository.DiveDiaryRepository;
-import edu.uoc.abarrena.users.domain.repository.TravelerRepository;
-import edu.uoc.abarrena.users.domain.repository.UserRepository;
-import edu.uoc.abarrena.users.infrastructure.repository.mybatis.CompanyRepositoryImpl;
-import edu.uoc.abarrena.users.infrastructure.repository.mybatis.DiveDiaryRepositoryImpl;
-import edu.uoc.abarrena.users.infrastructure.repository.mybatis.TravelerRepositoryImpl;
-import edu.uoc.abarrena.users.infrastructure.repository.mybatis.UserRepositoryImpl;
-import edu.uoc.abarrena.users.infrastructure.repository.mybatis.mapper.CompanyMapper;
-import edu.uoc.abarrena.users.infrastructure.repository.mybatis.mapper.DiveDiaryMapper;
-import edu.uoc.abarrena.users.infrastructure.repository.mybatis.mapper.TravelerMapper;
-import edu.uoc.abarrena.users.infrastructure.repository.mybatis.mapper.UserMapper;
+import edu.uoc.abarrena.users.domain.repository.*;
+import edu.uoc.abarrena.users.infrastructure.repository.mybatis.*;
+import edu.uoc.abarrena.users.infrastructure.repository.mybatis.mapper.*;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -53,5 +44,10 @@ public class RepositoryConfig {
     @Bean
     UserRepository userRepository(UserMapper userMapper) {
         return new UserRepositoryImpl(userMapper);
+    }
+
+    @Bean
+    FavouriteSearchRepository favouriteSearchRepository(FavouriteSearchMapper favouriteSearchMapper) {
+        return new FavouriteSearchRepositoryImpl(favouriteSearchMapper);
     }
 }
