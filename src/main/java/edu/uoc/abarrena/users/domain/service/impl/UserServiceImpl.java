@@ -54,6 +54,7 @@ public class UserServiceImpl implements UserService {
 
         Claims claims = Jwts.claims().setSubject(user.getUsername());
         claims.put("role", user.getRole());
+        claims.put("id", user.getId());
 
          return Jwts.builder()
                 .setClaims(claims)
