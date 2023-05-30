@@ -1,12 +1,15 @@
 package edu.uoc.abarrena.users.application.rest;
 
 import edu.uoc.abarrena.users.application.dto.request.CreateTravelerDto;
+import edu.uoc.abarrena.users.application.dto.request.UpdateTravelerDto;
 import edu.uoc.abarrena.users.application.dto.response.Result;
 import edu.uoc.abarrena.users.application.dto.response.TravelerDto;
 import edu.uoc.abarrena.users.domain.service.TravelerService;
 import edu.uoc.abarrena.users.domain.converter.TravelerConverter;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Log4j2
 @RestController
@@ -22,12 +25,21 @@ public class TravelerController {
     }
 
     @PostMapping
-    public Result<Long> createTraveler(@RequestBody CreateTravelerDto createTravelerDto) {
+    public Result<Long> createTraveler(@Valid @RequestBody CreateTravelerDto createTravelerDto) {
         log.trace("Creating traveler " + createTravelerDto);
 
         Long travelerId = travelerService.createTraveler(TravelerConverter.INSTANCE.toDomain(createTravelerDto));
 
         return new Result<Long>(travelerId, "Traveler created successfully");
+    }
+
+    @PutMapping("/{id}")
+    public Result<Boolean> updateTraveler(@PathVariable Long id, @Valid @RequestBody UpdateTravelerDto updateTravelerDto) {
+        log.trace("Updating traveler " + id);
+
+        travelerService.updateTraveler(TravelerConverter.INSTANCE.toDomain(updateTravelerDto));
+
+        return new Result<>(true, "Traveler updated successfully");
     }
 
     @GetMapping("/{id}")

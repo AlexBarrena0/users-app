@@ -10,4 +10,7 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode(callSuper = false)
 public class Traveler extends User {
 
+    private Long medicalCertificateId;
+    private Long divingCertificationId;
+    private Long divingInsuranceId;
 }

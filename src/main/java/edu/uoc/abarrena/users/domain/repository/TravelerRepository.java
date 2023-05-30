@@ -12,6 +12,12 @@ public interface TravelerRepository {
     public Long save(Traveler traveler);
 
     /**
+     * Update a traveler
+     * @param traveler the traveler to update
+     */
+    public void update(Traveler traveler);
+
+    /**
      * Finds a traveler by its id
      * @param id of the traveler to find
      * @return the traveler with the given id

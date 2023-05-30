@@ -24,6 +24,12 @@ public class TravelerRepositoryImpl implements TravelerRepository {
     }
 
     @Override
+    public void update(Traveler traveler) {
+        TravelerEntity travelerEntity = TravelerConverter.INSTANCE.toEntity(traveler);
+        travelerMapper.update(travelerEntity);
+    }
+
+    @Override
     public Traveler findById(Long id) {
         return TravelerConverter.INSTANCE.toDomain(travelerMapper.findById(id));
     }

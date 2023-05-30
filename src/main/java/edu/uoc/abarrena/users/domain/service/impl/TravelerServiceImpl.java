@@ -9,6 +9,8 @@ import edu.uoc.abarrena.users.domain.model.User;
 import edu.uoc.abarrena.users.domain.repository.TravelerRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class TravelerServiceImpl implements TravelerService {
 
@@ -38,6 +40,6 @@ public class TravelerServiceImpl implements TravelerService {
 
     @Override
     public void updateTraveler(Traveler traveler) {
-
+        travelerRepository.update(traveler);
     }
 }

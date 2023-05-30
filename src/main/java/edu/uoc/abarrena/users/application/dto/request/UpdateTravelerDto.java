@@ -1,11 +1,13 @@
-package edu.uoc.abarrena.users.application.dto.response;
+package edu.uoc.abarrena.users.application.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
-public class TravelerDto {
+@NoArgsConstructor
+public class UpdateTravelerDto {
 
     private Long id;
     private Long medicalCertificateId;
