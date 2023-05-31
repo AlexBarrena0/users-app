@@ -34,10 +34,10 @@ public class DiveDiaryController {
     }
 
     @GetMapping
-    public Result<List<DiveDiaryDto>> getDiveDiaryByUserId(@RequestParam Long userId) {
-        log.trace("Finding dive diary by user id " + userId);
+    public Result<List<DiveDiaryDto>> getDiveDiaryByTravelerId(@RequestParam Long travelerId) {
+        log.trace("Finding dive diary by traveler id " + travelerId);
 
-        List<DiveDiaryDto> diveDiaryDtoList = DiveDiaryConverter.INSTANCE.toDto(diveDiaryService.findDiveDiaryByUserId(userId));
+        List<DiveDiaryDto> diveDiaryDtoList = DiveDiaryConverter.INSTANCE.toDto(diveDiaryService.findDiveDiaryByUserId(travelerId));
 
         return new Result<List<DiveDiaryDto>>(diveDiaryDtoList, null);
     }

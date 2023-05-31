@@ -1,5 +1,6 @@
 package edu.uoc.abarrena.users.domain.service.impl;
 
+import edu.uoc.abarrena.users.domain.repository.DiveDiaryImageRepository;
 import edu.uoc.abarrena.users.domain.service.DiveDiaryService;
 import edu.uoc.abarrena.users.domain.service.TravelerService;
 import edu.uoc.abarrena.users.domain.exceptions.EntityNotFoundException;
@@ -17,9 +18,12 @@ public class DiveDiaryServiceImpl implements DiveDiaryService {
 
     private final TravelerService travelerService;
 
-    public DiveDiaryServiceImpl(DiveDiaryRepository diveDiaryRepository, TravelerService travelerService) {
+    private final DiveDiaryImageRepository diveDiaryImageRepository;
+
+    public DiveDiaryServiceImpl(DiveDiaryRepository diveDiaryRepository, TravelerService travelerService, DiveDiaryImageRepository diveDiaryImageRepository) {
         this.diveDiaryRepository = diveDiaryRepository;
         this.travelerService = travelerService;
+        this.diveDiaryImageRepository = diveDiaryImageRepository;
     }
 
     @Override
@@ -27,6 +31,9 @@ public class DiveDiaryServiceImpl implements DiveDiaryService {
         Traveler traveler = travelerService.findTravelerById(diveDiary.getTraveler().getId());
         if (traveler == null) {
             throw new EntityNotFoundException("Traveler not found");
+        }
+        if (diveDiary.getImagesIds() != null && !diveDiary.getImagesIds().isEmpty()) {
+            diveDiaryImageRepository.save(diveDiary.getId(), diveDiary.getImagesIds());
         }
         return diveDiaryRepository.save(diveDiary);
     }
@@ -37,6 +44,6 @@ public class DiveDiaryServiceImpl implements DiveDiaryService {
         if (traveler == null) {
             throw new EntityNotFoundException("Traveler not found");
         }
-        return diveDiaryRepository.findByUserId(id);
+        return diveDiaryRepository.findByTravelerId(id);
     }
 }

@@ -9,6 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -22,6 +23,8 @@ public class CreateDiveDiaryDto {
     @NotBlank(message = "Spot is required")
     @Max(value = 50, message = "Spot must be less than 50 characters")
     private String spot;
+    @Min(value = 0, message = "Duration must be greater than 0")
+    private Integer duration;
     @Min(value = 0, message = "Max depth must be greater than 0")
     private Double maxDepth;
     private Double temperature;
@@ -35,4 +38,5 @@ public class CreateDiveDiaryDto {
     private Integer airOut;
     private String comment;
     private Long travelerId;
+    private List<Long> imagesIds;
 }

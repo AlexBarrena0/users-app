@@ -50,4 +50,9 @@ public class RepositoryConfig {
     FavouriteSearchRepository favouriteSearchRepository(FavouriteSearchMapper favouriteSearchMapper) {
         return new FavouriteSearchRepositoryImpl(favouriteSearchMapper);
     }
+
+    @Bean
+    DiveDiaryImageRepository diveDiaryImageRepository(DiveDiaryImageMapper diveDiaryImageMapper) {
+        return new DiveDiaryImageRepositoryImpl(diveDiaryImageMapper);
+    }
 }

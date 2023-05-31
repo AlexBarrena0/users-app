@@ -25,8 +25,8 @@ public class DomainConfig {
     }
 
     @Bean
-    public DiveDiaryService diveDiaryService(DiveDiaryRepository diveDiaryRepository, TravelerService travelerService) {
-        return new DiveDiaryServiceImpl(diveDiaryRepository, travelerService);
+    public DiveDiaryService diveDiaryService(DiveDiaryRepository diveDiaryRepository, TravelerService travelerService, DiveDiaryImageRepository diveDiaryImageRepository) {
+        return new DiveDiaryServiceImpl(diveDiaryRepository, travelerService, diveDiaryImageRepository);
     }
 
     @Bean

@@ -23,7 +23,7 @@ public class DiveDiaryRepositoryImpl implements DiveDiaryRepository {
     }
 
     @Override
-    public List<DiveDiary> findByUserId(Long id) {
+    public List<DiveDiary> findByTravelerId(Long id) {
         return DiveDiaryConverter.INSTANCE.toDomain(diveDiaryMapper.findByUserId(id));
     }
 }
