@@ -5,6 +5,7 @@ import edu.uoc.abarrena.users.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.users.domain.exceptions.IncorrectCredentialsException;
 import edu.uoc.abarrena.users.domain.model.User;
 import edu.uoc.abarrena.users.domain.repository.UserRepository;
+import edu.uoc.abarrena.users.infrastructure.authorization.jwt.JwtTokenUtil;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -19,18 +20,18 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
-    private static final String SECRET_KEY = "abarrena0_uoc_edu";
-    private static final long EXPIRATION_TIME = 86400000; // 24 hours in milliseconds
+    private final JwtTokenUtil jwtTokenUtil;
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, JwtTokenUtil jwtTokenUtil) {
         this.userRepository = userRepository;
+        this.jwtTokenUtil = jwtTokenUtil;
     }
 
     @Override
     public String login(User user) throws IncorrectCredentialsException {
         User userInfo = findUserByUsername(user.getUsername());
         if (userInfo != null && userInfo.getPassword().equals(user.getPassword())) {
-            return generateToken(userInfo);
+            return jwtTokenUtil.generateToken(userInfo);
         } else {
             throw new IncorrectCredentialsException();
         }
@@ -46,29 +47,4 @@ public class UserServiceImpl implements UserService {
         userRepository.delete(id);
     }
 
-    private String generateToken(User user) {
-        Date now = new Date();
-        Date expiration = new Date(now.getTime() + EXPIRATION_TIME);
-
-        SecretKey key = Keys.hmacShaKeyFor(extendKey(SECRET_KEY));
-
-        Claims claims = Jwts.claims().setSubject(user.getUsername());
-        claims.put("role", user.getRole());
-        claims.put("id", user.getId());
-
-         return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(expiration)
-                .signWith(key, SignatureAlgorithm.HS256)
-                .compact();
-    }
-
-    private byte[] extendKey(String key) {
-        byte[] extendedKey = new byte[32];
-        for (int i = 0; i < key.length(); i++) {
-            extendedKey[i] = (byte) key.charAt(i);
-        }
-        return extendedKey;
-    }
 }

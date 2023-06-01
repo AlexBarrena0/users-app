@@ -3,6 +3,7 @@ package edu.uoc.abarrena.users.domain.config;
 import edu.uoc.abarrena.users.domain.repository.*;
 import edu.uoc.abarrena.users.domain.service.*;
 import edu.uoc.abarrena.users.domain.service.impl.*;
+import edu.uoc.abarrena.users.infrastructure.authorization.jwt.JwtTokenUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -10,8 +11,8 @@ import org.springframework.context.annotation.Configuration;
 public class DomainConfig {
 
     @Bean
-    public UserService userService(UserRepository userRepository) {
-        return new UserServiceImpl(userRepository);
+    public UserService userService(UserRepository userRepository, JwtTokenUtil jwtTokenUtil) {
+        return new UserServiceImpl(userRepository, jwtTokenUtil);
     }
 
     @Bean
