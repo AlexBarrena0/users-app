@@ -1,7 +1,7 @@
 package edu.uoc.abarrena.users.application.handler;
 
-import edu.uoc.abarrena.users.domain.exceptions.AbstractBusinessLogicException;
 import edu.uoc.abarrena.users.application.dto.response.Result;
+import edu.uoc.abarrena.users.domain.exceptions.AbstractBusinessLogicException;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.ControllerAdvice;

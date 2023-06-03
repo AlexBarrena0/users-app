@@ -32,4 +32,10 @@ public class FavouriteSearchRepositoryImpl implements FavouriteSearchRepository 
     public void delete(Long id) {
         favouriteSearchMapper.delete(id);
     }
+
+    @Override
+    public List<Long> findUsersByDestinationIdAndDates(FavouriteSearch favouriteSearch) {
+        FavouriteSearchEntity favouriteSearchEntity = FavouriteSearchConverter.INSTANCE.toEntity(favouriteSearch);
+        return favouriteSearchMapper.searchUsersByDestinationIdAndDates(favouriteSearchEntity);
+    }
 }

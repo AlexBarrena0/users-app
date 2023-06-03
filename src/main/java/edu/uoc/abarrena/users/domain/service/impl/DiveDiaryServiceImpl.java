@@ -1,12 +1,12 @@
 package edu.uoc.abarrena.users.domain.service.impl;
 
-import edu.uoc.abarrena.users.domain.repository.DiveDiaryImageRepository;
-import edu.uoc.abarrena.users.domain.service.DiveDiaryService;
-import edu.uoc.abarrena.users.domain.service.TravelerService;
 import edu.uoc.abarrena.users.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.users.domain.model.DiveDiary;
 import edu.uoc.abarrena.users.domain.model.Traveler;
+import edu.uoc.abarrena.users.domain.repository.DiveDiaryImageRepository;
 import edu.uoc.abarrena.users.domain.repository.DiveDiaryRepository;
+import edu.uoc.abarrena.users.domain.service.DiveDiaryService;
+import edu.uoc.abarrena.users.domain.service.TravelerService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

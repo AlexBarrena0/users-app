@@ -6,13 +6,15 @@ public interface DiveDiaryImageRepository {
 
     /**
      * Save the images of a dive diary
+     *
      * @param diveDiaryId dive diary id
-     * @param imagesIds images ids
+     * @param imagesIds   images ids
      */
     void save(Long diveDiaryId, List<Long> imagesIds);
 
     /**
      * Find the images of a traveler
+     *
      * @param diveDiaryId dive diary id
      * @return images ids
      */

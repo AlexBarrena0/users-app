@@ -8,8 +8,8 @@ import org.apache.ibatis.annotations.Select;
 public interface UserMapper {
 
     @Select("SELECT * FROM APP_USER WHERE USERNAME = #{username}")
-    public UserEntity findUserByUsername(String username);
+    UserEntity findUserByUsername(String username);
 
     @Select("DELETE FROM APP_USER WHERE ID = #{id}")
-    public void delete(Long id);
+    void delete(Long id);
 }

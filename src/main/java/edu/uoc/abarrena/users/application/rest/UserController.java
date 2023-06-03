@@ -2,8 +2,8 @@ package edu.uoc.abarrena.users.application.rest;
 
 import edu.uoc.abarrena.users.application.dto.request.LoginDto;
 import edu.uoc.abarrena.users.application.dto.response.Result;
-import edu.uoc.abarrena.users.domain.service.UserService;
 import edu.uoc.abarrena.users.domain.converter.UserConverter;
+import edu.uoc.abarrena.users.domain.service.UserService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 

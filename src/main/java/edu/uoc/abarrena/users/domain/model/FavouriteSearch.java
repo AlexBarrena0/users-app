@@ -15,4 +15,10 @@ public class FavouriteSearch {
     private LocalDate endDate;
     private Long destinationId;
     private Traveler traveler;
+
+    public FavouriteSearch(LocalDate startDate, LocalDate endDate, Long destinationId) {
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.destinationId = destinationId;
+    }
 }

@@ -9,9 +9,11 @@ public interface CompanyMapper {
     @Insert("INSERT INTO COMPANY(ROLE, USERNAME, PASSWORD, CIF, NAME, ADDRESS, DESCRIPTION, PHONE, EMAIL) " +
             "VALUES (#{role}, #{username}, #{password}, #{cif}, #{name}, #{address}, #{description}, #{phone}, #{email})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-    public void save(CompanyEntity companyEntity);
+    void save(CompanyEntity companyEntity);
+
     @Select("SELECT * FROM COMPANY WHERE ID = #{id}")
-    public CompanyEntity findById(Long id);
+    CompanyEntity findById(Long id);
+
     @Update("UPDATE COMPANY SET CIF = #{cif}, NAME = #{name}, ADDRESS = #{address}, DESCRIPTION = #{description}, PHONE = #{phone}, EMAIL = #{email} WHERE ID = #{id}")
-    public void update(CompanyEntity companyEntity);
+    void update(CompanyEntity companyEntity);
 }

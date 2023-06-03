@@ -4,8 +4,8 @@ import edu.uoc.abarrena.users.application.dto.request.CreateTravelerDto;
 import edu.uoc.abarrena.users.application.dto.request.UpdateTravelerDto;
 import edu.uoc.abarrena.users.application.dto.response.Result;
 import edu.uoc.abarrena.users.application.dto.response.TravelerDto;
-import edu.uoc.abarrena.users.domain.service.TravelerService;
 import edu.uoc.abarrena.users.domain.converter.TravelerConverter;
+import edu.uoc.abarrena.users.domain.service.TravelerService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 

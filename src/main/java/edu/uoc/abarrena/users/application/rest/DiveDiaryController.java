@@ -2,9 +2,9 @@ package edu.uoc.abarrena.users.application.rest;
 
 import edu.uoc.abarrena.users.application.dto.request.CreateDiveDiaryDto;
 import edu.uoc.abarrena.users.application.dto.response.DiveDiaryDto;
-import edu.uoc.abarrena.users.domain.service.DiveDiaryService;
-import edu.uoc.abarrena.users.domain.converter.DiveDiaryConverter;
 import edu.uoc.abarrena.users.application.dto.response.Result;
+import edu.uoc.abarrena.users.domain.converter.DiveDiaryConverter;
+import edu.uoc.abarrena.users.domain.service.DiveDiaryService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 

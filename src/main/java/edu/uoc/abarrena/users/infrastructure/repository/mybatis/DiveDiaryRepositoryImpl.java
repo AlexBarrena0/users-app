@@ -12,9 +12,10 @@ public class DiveDiaryRepositoryImpl implements DiveDiaryRepository {
 
     private final DiveDiaryMapper diveDiaryMapper;
 
-    public DiveDiaryRepositoryImpl(DiveDiaryMapper diveDiaryMapper){
+    public DiveDiaryRepositoryImpl(DiveDiaryMapper diveDiaryMapper) {
         this.diveDiaryMapper = diveDiaryMapper;
     }
+
     @Override
     public Long save(DiveDiary diveDiary) {
         DiveDiaryEntity diveDiaryEntity = DiveDiaryConverter.INSTANCE.toEntity(diveDiary);

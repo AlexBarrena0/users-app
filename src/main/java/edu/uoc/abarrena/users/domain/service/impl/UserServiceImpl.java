@@ -1,19 +1,12 @@
 package edu.uoc.abarrena.users.domain.service.impl;
 
-import edu.uoc.abarrena.users.domain.service.UserService;
 import edu.uoc.abarrena.users.domain.exceptions.EntityNotFoundException;
 import edu.uoc.abarrena.users.domain.exceptions.IncorrectCredentialsException;
 import edu.uoc.abarrena.users.domain.model.User;
 import edu.uoc.abarrena.users.domain.repository.UserRepository;
+import edu.uoc.abarrena.users.domain.service.UserService;
 import edu.uoc.abarrena.users.infrastructure.authorization.jwt.JwtTokenUtil;
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
 import org.springframework.stereotype.Service;
-
-import javax.crypto.SecretKey;
-import java.util.Date;
 
 @Service
 public class UserServiceImpl implements UserService {

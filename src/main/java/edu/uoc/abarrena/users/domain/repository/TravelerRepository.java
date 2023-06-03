@@ -6,21 +6,24 @@ public interface TravelerRepository {
 
     /**
      * Save a traveler
+     *
      * @param traveler to save
      * @return the id of the saved traveler
      */
-    public Long save(Traveler traveler);
+    Long save(Traveler traveler);
 
     /**
      * Update a traveler
+     *
      * @param traveler the traveler to update
      */
-    public void update(Traveler traveler);
+    void update(Traveler traveler);
 
     /**
      * Finds a traveler by its id
+     *
      * @param id of the traveler to find
      * @return the traveler with the given id
      */
-    public Traveler findById(Long id);
+    Traveler findById(Long id);
 }

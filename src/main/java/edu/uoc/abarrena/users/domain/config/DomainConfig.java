@@ -1,11 +1,13 @@
 package edu.uoc.abarrena.users.domain.config;
 
+import edu.uoc.abarrena.users.domain.model.Notification;
 import edu.uoc.abarrena.users.domain.repository.*;
 import edu.uoc.abarrena.users.domain.service.*;
 import edu.uoc.abarrena.users.domain.service.impl.*;
 import edu.uoc.abarrena.users.infrastructure.authorization.jwt.JwtTokenUtil;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.kafka.core.KafkaTemplate;
 
 @Configuration
 public class DomainConfig {
@@ -34,4 +36,11 @@ public class DomainConfig {
     public FavouriteSearchService favouriteSearchService(FavouriteSearchRepository favouriteSearchRepository, TravelerService travelerService) {
         return new FavouriteSearchServiceImpl(favouriteSearchRepository, travelerService);
     }
+
+    @Bean
+    public NotificationService notificationService(KafkaTemplate<String, Notification> notificationKafkaTemplate, FavouriteSearchService favouriteSearchService) {
+        return new NotificationServiceImpl(notificationKafkaTemplate, favouriteSearchService);
+    }
+
+
 }

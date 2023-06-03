@@ -1,12 +1,12 @@
 package edu.uoc.abarrena.users.domain.service.impl;
 
-import edu.uoc.abarrena.users.domain.service.CompanyService;
-import edu.uoc.abarrena.users.domain.service.UserService;
 import edu.uoc.abarrena.users.domain.exceptions.DuplicateUserException;
 import edu.uoc.abarrena.users.domain.model.Company;
 import edu.uoc.abarrena.users.domain.model.Role;
 import edu.uoc.abarrena.users.domain.model.User;
 import edu.uoc.abarrena.users.domain.repository.CompanyRepository;
+import edu.uoc.abarrena.users.domain.service.CompanyService;
+import edu.uoc.abarrena.users.domain.service.UserService;
 import org.springframework.stereotype.Service;
 
 @Service

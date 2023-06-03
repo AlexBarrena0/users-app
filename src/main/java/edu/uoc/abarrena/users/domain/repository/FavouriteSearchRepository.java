@@ -6,9 +6,11 @@ import java.util.List;
 
 public interface FavouriteSearchRepository {
 
-    public Long save(FavouriteSearch favouriteSearch);
+    Long save(FavouriteSearch favouriteSearch);
 
-    public List<FavouriteSearch> findByUserId(Long id);
+    List<FavouriteSearch> findByUserId(Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
+
+    List<Long> findUsersByDestinationIdAndDates(FavouriteSearch favouriteSearch);
 }

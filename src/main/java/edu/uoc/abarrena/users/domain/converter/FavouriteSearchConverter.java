@@ -13,7 +13,7 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface FavouriteSearchConverter {
 
-    public static final FavouriteSearchConverter INSTANCE = Mappers.getMapper(FavouriteSearchConverter.class);
+    FavouriteSearchConverter INSTANCE = Mappers.getMapper(FavouriteSearchConverter.class);
 
     FavouriteSearchEntity toEntity(FavouriteSearch favouriteSearch);
 

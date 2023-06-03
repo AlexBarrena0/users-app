@@ -1,15 +1,13 @@
 package edu.uoc.abarrena.users.domain.service.impl;
 
-import edu.uoc.abarrena.users.domain.service.TravelerService;
-import edu.uoc.abarrena.users.domain.service.UserService;
 import edu.uoc.abarrena.users.domain.exceptions.DuplicateUserException;
 import edu.uoc.abarrena.users.domain.model.Role;
 import edu.uoc.abarrena.users.domain.model.Traveler;
 import edu.uoc.abarrena.users.domain.model.User;
 import edu.uoc.abarrena.users.domain.repository.TravelerRepository;
+import edu.uoc.abarrena.users.domain.service.TravelerService;
+import edu.uoc.abarrena.users.domain.service.UserService;
 import org.springframework.stereotype.Service;
-
-import java.util.Map;
 
 @Service
 public class TravelerServiceImpl implements TravelerService {

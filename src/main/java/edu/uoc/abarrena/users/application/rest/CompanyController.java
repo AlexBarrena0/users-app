@@ -3,9 +3,9 @@ package edu.uoc.abarrena.users.application.rest;
 import edu.uoc.abarrena.users.application.dto.request.CreateCompanyDto;
 import edu.uoc.abarrena.users.application.dto.request.UpdateCompanyDto;
 import edu.uoc.abarrena.users.application.dto.response.CompanyDto;
-import edu.uoc.abarrena.users.domain.service.CompanyService;
-import edu.uoc.abarrena.users.domain.converter.CompanyConverter;
 import edu.uoc.abarrena.users.application.dto.response.Result;
+import edu.uoc.abarrena.users.domain.converter.CompanyConverter;
+import edu.uoc.abarrena.users.domain.service.CompanyService;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 

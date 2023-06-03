@@ -12,8 +12,8 @@ import java.util.List;
 public interface DiveDiaryImageMapper {
 
     @InsertProvider(type = DiveDiaryImageEntitySqlProvider.class, method = "save")
-    public void save(HashMap<String, Object> params);
+    void save(HashMap<String, Object> params);
 
     @Select("SELECT IMAGE_ID FROM TRAVELER_IMAGE WHERE TRAVELER_ID = #{travelerId}")
-    public List<Long> findByDiveDiaryId(Long diveDiaryId);
+    List<Long> findByDiveDiaryId(Long diveDiaryId);
 }

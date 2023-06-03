@@ -2,8 +2,6 @@ package edu.uoc.abarrena.users.infrastructure.repository.mybatis.provider;
 
 import edu.uoc.abarrena.users.infrastructure.repository.mybatis.entity.TravelerEntity;
 
-import java.util.Map;
-
 public class TravelerEntitySqlProvider {
 
     public String update(TravelerEntity travelerEntity) {

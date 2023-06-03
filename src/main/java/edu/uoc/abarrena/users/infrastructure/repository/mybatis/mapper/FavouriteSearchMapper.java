@@ -1,6 +1,7 @@
 package edu.uoc.abarrena.users.infrastructure.repository.mybatis.mapper;
 
 import edu.uoc.abarrena.users.infrastructure.repository.mybatis.entity.FavouriteSearchEntity;
+import edu.uoc.abarrena.users.infrastructure.repository.mybatis.provider.FavouriteSearchEntitySqlProvider;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -10,7 +11,7 @@ public interface FavouriteSearchMapper {
 
     @Insert("INSERT INTO FAVOURITE_SEARCH (START_DATE, END_DATE, DESTINATION_ID, TRAVELER_ID) VALUES (#{startDate}, #{endDate}, #{destinationId}, #{traveler.id})")
     @Options(useGeneratedKeys = true, keyProperty = "id", keyColumn = "id")
-    public void save(FavouriteSearchEntity favouriteSearchEntity);
+    void save(FavouriteSearchEntity favouriteSearchEntity);
 
     @Results(id = "favouriteSearchResultMap", value = {
             @Result(property = "id", column = "id"),
@@ -20,8 +21,11 @@ public interface FavouriteSearchMapper {
             @Result(property = "traveler.id", column = "traveler_id")
     })
     @Select("SELECT * FROM FAVOURITE_SEARCH WHERE TRAVELER_ID = #{id}")
-    public List<FavouriteSearchEntity> findByUserId(Long id);
+    List<FavouriteSearchEntity> findByUserId(Long id);
 
     @Delete("DELETE FROM FAVOURITE_SEARCH WHERE ID = #{id}")
-    public void delete(Long id);
+    void delete(Long id);
+
+    @SelectProvider(type = FavouriteSearchEntitySqlProvider.class, method = "findByDestinationIdAndDates")
+    List<Long> searchUsersByDestinationIdAndDates(FavouriteSearchEntity favouriteSearchEntity);
 }

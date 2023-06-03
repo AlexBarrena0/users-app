@@ -6,7 +6,6 @@ import edu.uoc.abarrena.users.domain.model.Traveler;
 import edu.uoc.abarrena.users.domain.repository.FavouriteSearchRepository;
 import edu.uoc.abarrena.users.domain.service.FavouriteSearchService;
 import edu.uoc.abarrena.users.domain.service.TravelerService;
-import edu.uoc.abarrena.users.domain.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -40,5 +39,10 @@ public class FavouriteSearchServiceImpl implements FavouriteSearchService {
     @Override
     public void deleteFavouriteSearch(Long id) {
         favouriteSearchRepository.delete(id);
+    }
+
+    @Override
+    public List<Long> findFavouriteSearchUsersByDestinationIdAndDates(FavouriteSearch favouriteSearch) {
+        return favouriteSearchRepository.findUsersByDestinationIdAndDates(favouriteSearch);
     }
 }
