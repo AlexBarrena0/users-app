@@ -34,10 +34,10 @@ public class FavouriteSearchController {
     }
 
     @GetMapping
-    public Result<List<FavouriteSearchDto>> findFavouriteSearchByUserId(@RequestParam Long userId) {
-        log.trace("Finding favourite search by user id " + userId);
+    public Result<List<FavouriteSearchDto>> findFavouriteSearchByTravelerId(@RequestParam Long travelerId) {
+        log.trace("Finding favourite search by user id " + travelerId);
 
-        List<FavouriteSearchDto> favouriteSearchDto = FavouriteSearchConverter.INSTANCE.toDto(favouriteSearchService.findFavouriteSearchByUserId(userId));
+        List<FavouriteSearchDto> favouriteSearchDto = FavouriteSearchConverter.INSTANCE.toDto(favouriteSearchService.findFavouriteSearchByUserId(travelerId));
 
         return new Result<List<FavouriteSearchDto>>(favouriteSearchDto, null);
     }
