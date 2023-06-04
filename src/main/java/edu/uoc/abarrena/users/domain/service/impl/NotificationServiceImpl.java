@@ -6,7 +6,6 @@ import edu.uoc.abarrena.users.domain.model.NotificationType;
 import edu.uoc.abarrena.users.domain.service.FavouriteSearchService;
 import edu.uoc.abarrena.users.domain.service.NotificationService;
 import edu.uoc.abarrena.users.infrastructure.kafka.KafkaConstants;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +38,7 @@ public class NotificationServiceImpl implements NotificationService {
                 return;
             }
             usersIds.forEach(userId -> {
-                Notification newNotification = new Notification(NotificationType.NEW_RESULT, userId);
+                Notification newNotification = new Notification(NotificationType.NEW_RESULT, userId, params);
                 notificationKafkaTemplate.send(KafkaConstants.FAVOURITE_SEARCH_TOPIC + KafkaConstants.SEPARATOR + KafkaConstants.COMMAND_ADD, newNotification);
             });
         }
