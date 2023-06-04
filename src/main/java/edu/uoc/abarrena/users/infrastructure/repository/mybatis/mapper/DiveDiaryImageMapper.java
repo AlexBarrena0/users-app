@@ -14,6 +14,6 @@ public interface DiveDiaryImageMapper {
     @InsertProvider(type = DiveDiaryImageEntitySqlProvider.class, method = "save")
     void save(HashMap<String, Object> params);
 
-    @Select("SELECT IMAGE_ID FROM TRAVELER_IMAGE WHERE TRAVELER_ID = #{travelerId}")
+    @Select("SELECT IMAGE_ID FROM DIVE_DIARY_IMAGE WHERE DIVE_DIARY_ID = #{diveDiaryId}")
     List<Long> findByDiveDiaryId(Long diveDiaryId);
 }

@@ -32,10 +32,11 @@ public class DiveDiaryServiceImpl implements DiveDiaryService {
         if (traveler == null) {
             throw new EntityNotFoundException("Traveler not found");
         }
+        Long id = diveDiaryRepository.save(diveDiary);
         if (diveDiary.getImagesIds() != null && !diveDiary.getImagesIds().isEmpty()) {
-            diveDiaryImageRepository.save(diveDiary.getId(), diveDiary.getImagesIds());
+            diveDiaryImageRepository.save(id, diveDiary.getImagesIds());
         }
-        return diveDiaryRepository.save(diveDiary);
+        return id;
     }
 
     @Override
